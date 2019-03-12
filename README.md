@@ -1,0 +1,2 @@
+# simplymathematics.xyz
+homepage

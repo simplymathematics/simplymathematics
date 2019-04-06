@@ -1,113 +1,115 @@
 "use strict";
 
-/**
- * Configs
- */
-var configs = (function () {
-    var instance;
-    var Singleton = function (options) {
-        var options = options || Singleton.defaultOptions;
-        for (var key in Singleton.defaultOptions) {
-            this[key] = options[key] || Singleton.defaultOptions[key];
-        }
-    };
-    Singleton.defaultOptions = {
-        general_help: "Below there's a list of commands that you can use.\nYou can use autofill by pressing the TAB key, autocompleting if there's only 1 possibility, or showing you a list of possibilities.",
-        ls_help: "List information about the files and folders (the current directory by default).",
-        cat_help: "Read FILE(s) content and print it to the standard output (screen).",
-        whoami_help: "Print the user name associated with the current effective user ID and more info.",
-        date_help: "Print the system date and time.",
-        help_help: "Print this menu.",
-        clear_help: "Clear the terminal screen.",
-        reboot_help: "Reboot the system.",
-        cd_help: "Change the current working directory.",
-        mv_help: "Move (rename) files.",
-        rm_help: "Remove files or directories.",
-        rmdir_help: "Remove directory, this command will only work if the folders are empty.",
-        touch_help: "Change file timestamps. If the file doesn't exist, it's created an empty one.",
-        sudo_help: "Execute a command as the superuser.",
-        welcome: "Welcome. Type 'help' or use the sidebar.",
-        internet_explorer_warning: "NOTE: I see you're using internet explorer, this website won't work properly. Please ask your nephew for help.",
-        welcome_file_name: "welcome.txt",
-        invalid_command_message: "<value>: command not found.",
-        reboot_message: "Preparing to reboot...\n\n3...\n\n2...\n\n1...\n\nRebooting...\n\n",
-        permission_denied_message: "Unable to '<value>', permission denied.",
-        sudo_message: "Unable to sudo using a web client. There's probably another way.",
-        usage: "Usage",
-        file: "file",
-        file_not_found: "File '<value>' not found.",
-        username: "Username",
-        hostname: "Host",
-        platform: "Platform",
-        accesible_cores: "Accessible cores",
-        language: "Language",
-        value_token: "<value>",
-        host: "simplymathematics.xyz",
-        user: "user",
-        is_root: false,
-        type_delay: 20
-    };
-    return {
-        getInstance: function (options) {
-            instance === void 0 && (instance = new Singleton(options));
-            return instance;
-        }
-    };
-})();
-
-/**
- * Your files here
- */
-var files = (function () {
-    var instance;
-    var Singleton = function (options) {
-        var options = options || Singleton.defaultOptions;
-        for (var key in Singleton.defaultOptions) {
-            this[key] = options[key] || Singleton.defaultOptions[key];
-        }
-    };
-    Singleton.defaultOptions = {
-        "welcome.sh": "Type help or use the sidebar on the left to nav",
-        "about.txt": "Type help or use the sidebar on the left to nav",
-        "contact.txt": "hello@simplymathematics.xyz",
-        "github.git": "https://github.com/simplymathematics/",
-        "rpubs.R": "https://rpubs.com/simplymathematics/",
-        "NextBillionOnline.cpp" : "http://thenextbillion.online", 
-        "SparksBot.pyc" : "https://thenextbilliononline.github.io/sparks-bot/",
-        "Resume.pdf" : "Resume.pdf"
-
-    };
-    return {
-        getInstance: function (options) {
-            instance === void 0 && (instance = new Singleton(options));
-            return instance;
-        }
-    };
-})();
-
 var main = (function () {
+    /**
+     * CONFIGS
+     */
+    var configs = (function () {
+        var instance;
+        var Singleton = function (options) {
+            var options = options || Singleton.defaultOptions;
+            for (var key in Singleton.defaultOptions) {
+                this[key] = options[key] || Singleton.defaultOptions[key];
+            }
+        };
+        Singleton.defaultOptions = {
+            general_help: "Below there's a list of commands that you can use.\nYou can use autofill by pressing the TAB key, autocompleting if there's only 1 possibility, or showing you a list of possibilities.",
+            ls_help: "List information about the files and folders (the current directory by default).",
+            cat_help: "Read FILE(s) content and print it to the standard output (screen).",
+            whoami_help: "Print the user name associated with the current effective user ID and more info.",
+            date_help: "Print the system date and time.",
+            help_help: "Print this menu.",
+            clear_help: "Clear the terminal screen.",
+            reboot_help: "Reboot the system.",
+            cd_help: "Change the current working directory.",
+            mv_help: "Move (rename) files.",
+            rm_help: "Remove files or directories.",
+            rmdir_help: "Remove directory, this command will only work if the folders are empty.",
+            touch_help: "Change file timestamps. If the file doesn't exist, it's created an empty one.",
+            sudo_help: "Execute a command as the superuser.",
+            welcome: "Welcome to FTW (Fake Terminal Website)! :)\nIn order for you to start customizing the texts, go to js/main.js and replace the texts located at the configs var.\nIn that same file, you can define all the fake files you want as well as their content. This files will appear on the sidenav.\nAlso, don't forget to change the colors on the css/main.css file as well as the website title on the index.html file.\nNow in order to get started, feel free to either execute the 'help' command or use the more user-friendly colored sidenav at your left.\nIn order to skip text rolling, double click/touch anywhere.",
+            internet_explorer_warning: "NOTE: I see you're using internet explorer, this website won't work properly.",
+            welcome_file_name: "welcome_message.txt",
+            invalid_command_message: "<value>: command not found.",
+            reboot_message: "Preparing to reboot...\n\n3...\n\n2...\n\n1...\n\nRebooting...\n\n",
+            permission_denied_message: "Unable to '<value>', permission denied.",
+            sudo_message: "Unable to sudo using a web client.",
+            usage: "Usage",
+            file: "file",
+            file_not_found: "File '<value>' not found.",
+            username: "Username",
+            hostname: "Host",
+            platform: "Platform",
+            accesible_cores: "Accessible cores",
+            language: "Language",
+            value_token: "<value>",
+            host: "example.com",
+            user: "guest",
+            is_root: false,
+            type_delay: 20
+        };
+        return {
+            getInstance: function (options) {
+                instance === void 0 && (instance = new Singleton(options));
+                return instance;
+            }
+        };
+    })();
+    var files = (function () {
+        var instance;
+        var Singleton = function (options) {
+            var options = options || Singleton.defaultOptions;
+            for (var key in Singleton.defaultOptions) {
+                this[key] = options[key] || Singleton.defaultOptions[key];
+            }
+        };
+        Singleton.defaultOptions = {
+            "about.txt": "This website was made using only pure JavaScript with no extra libraries.\nI made it dynamic so anyone can use it, just download it from GitHub and change the config text according to your needs.\nIf you manage to find any bugs or security issues feel free to email me: luisbraganca@protonmail.com",
+            "getting_started.txt": "First, go to js/main.js and replace all the text on both singleton vars.\n- configs: All the text used on the website.\n- files: All the fake files used on the website. These files are also used to be listed on the sidenav.\nAlso please notice if a file content is a raw URL, when clicked/concatenated it will be opened on a new tab.\nDon't forget also to:\n- Change the page title on the index.html file\n- Change the website color on the css/main.css\n- Change the images located at the img folder. The suggested sizes are 150x150 for the avatar and 32x32/16x16 for the favicon.",
+            "contact.txt": "mail@example.com",
+            "social_network_1.txt": "https://www.socialite.com/username/",
+            "social_network_2.txt": "https://example.com/profile/9382/"
+        };
+        return {
+            getInstance: function (options) {
+                instance === void 0 && (instance = new Singleton(options));
+                return instance;
+            }
+        };
+    })();
 
     /**
-     * Aux functions
+     * AUX FUNCTIONS
      */
-    var isUsingIE = window.navigator.userAgent.indexOf("MSIE ") > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./);
 
-    var ignoreEvent = function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-    };
-    
-    var scrollToBottom = function () {
-        window.scrollTo(0, document.body.scrollHeight);
-    };
-    
-    var isURL = function (str) {
-        return (str.startsWith("http") || str.startsWith("www")) && str.indexOf(" ") === -1 && str.indexOf("\n") === -1;
-    };
-    
+    var isUsingIE = (function () {
+        return function () {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+            return (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./));
+        }
+    })();
+
+    var ignoreEvent = (function () {
+        return function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        };
+    })();
+
+    var scrollToBottom = (function () {
+        return function () {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    })();
+
+    var isPhone = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i);
+
+
     /**
-     * Model
+     * MODEL
      */
+
     var InvalidArgumentException = function (message) {
         this.message = message;
         // Use V8's native method if available, otherwise fallback
@@ -137,6 +139,7 @@ var main = (function () {
         TOUCH: { value: "touch", help: configs.getInstance().touch_help },
         SUDO: { value: "sudo", help: configs.getInstance().sudo_help }
     };
+
 
     var Terminal = function (prompt, cmdLine, output, sidenav, profilePic, user, host, root, outputTimer) {
         if (!(prompt instanceof Node) || prompt.nodeName.toUpperCase() !== "DIV") {
@@ -177,6 +180,7 @@ var main = (function () {
     };
 
     Terminal.prototype.init = function () {
+        isPhone && (document.getElementById("githubImg").style.display = "none");
         this.sidenav.addEventListener("click", ignoreEvent);
         this.cmdLine.disabled = true;
         this.sidenavElements.forEach(function (elem) {
@@ -184,12 +188,7 @@ var main = (function () {
         });
         this.prepareSideNav();
         this.lock(); // Need to lock here since the sidenav elements were just added
-        document.body.addEventListener("click", function (event) {
-            if (this.sidenavOpen) {
-                this.handleSidenav(event);
-            }
-            this.focus();
-        }.bind(this));
+        document.body.addEventListener("click", this.focus.bind(this));
         this.cmdLine.addEventListener("keydown", function (event) {
             if (event.which === 13 || event.keyCode === 13) {
                 this.handleCmd();
@@ -202,14 +201,22 @@ var main = (function () {
         this.reset();
     };
 
+
+
     Terminal.makeElementDisappear = function (element) {
         element.style.opacity = 0;
         element.style.transform = "translateX(-300px)";
+        // Support for old browsers
+        element.style.msTransform = "translateX(-300px)";
+        element.style.WebkitTransform = "translateX(-300px)";
     };
 
     Terminal.makeElementAppear = function (element) {
         element.style.opacity = 1;
         element.style.transform = "translateX(0)";
+        // Support for old browsers
+        element.style.msTransform = "translateX(0)";
+        element.style.WebkitTransform = "translateX(0)";
     };
 
     Terminal.prototype.prepareSideNav = function () {
@@ -268,7 +275,9 @@ var main = (function () {
             elem.disabled = false;
         });
         scrollToBottom();
-        this.focus();
+        if (!isPhone) {
+            this.focus();
+        }
     };
 
     Terminal.prototype.handleFill = function () {
@@ -355,7 +364,7 @@ var main = (function () {
         var result;
         if (cmdComponents.length <= 1) {
             result = configs.getInstance().usage + ": " + cmds.CAT.value + " <" + configs.getInstance().file + ">";
-        } else if (!cmdComponents[1] || (!cmdComponents[1] === configs.getInstance().welcome_file_name || !files.getInstance().hasOwnProperty(cmdComponents[1]))) {
+        } else if (!cmdComponents[1] || (!cmdComponents[1] === configs.getInstance().welcome_file_name && !files.getInstance().hasOwnProperty(cmdComponents[1]))) {
             result = configs.getInstance().file_not_found.replace(configs.getInstance().value_token, cmdComponents[1]);
         } else {
             result = cmdComponents[1] === configs.getInstance().welcome_file_name ? configs.getInstance().welcome : files.getInstance()[cmdComponents[1]];
@@ -407,7 +416,7 @@ var main = (function () {
         this.output.textContent = "";
         this.prompt.textContent = "";
         if (this.typeSimulator) {
-            this.type(configs.getInstance().welcome + (isUsingIE ? "\n" + configs.getInstance().internet_explorer_warning : ""), function () {
+            this.type(configs.getInstance().welcome + (isUsingIE() ? "\n" + configs.getInstance().internet_explorer_warning : ""), function () {
                 this.unlock();
             }.bind(this));
         }
@@ -438,6 +447,11 @@ var main = (function () {
     };
 
     TypeSimulator.prototype.type = function (text, callback) {
+        var isURL = (function () {
+            return function (str) {
+                return (str.startsWith("http") || str.startsWith("www")) && str.indexOf(" ") === -1 && str.indexOf("\n") === -1;
+            };
+        })();
         if (isURL(text)) {
             window.open(text);
         }

@@ -16,6 +16,8 @@ var configs = (function () {
         ls_help: "List information about the files and folders (the current directory by default).",
         cat_help: "Read FILE(s) content and print it to the standard output (screen).",
         whoami_help: "Print the user name associated with the current effective user ID and more info.",
+        reverse_help: "Reverses a string.",
+        multiples_help: "Prints the first 20 multiples of a number as a table."
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",
         clear_help: "Clear the terminal screen.",
@@ -68,7 +70,6 @@ var files = (function () {
     };
     Singleton.defaultOptions = {
         "welcome.sh": "Type help or use the sidebar on the left to nav",
-        "about.txt": "Type help or use the sidebar on the left to nav",
         "contact.txt": "hello@simplymathematics.xyz",
         "github.git": "https://github.com/simplymathematics/",
         "rpubs.R": "https://rpubs.com/simplymathematics/",
@@ -126,6 +127,8 @@ var main = (function () {
         LS: { value: "ls", help: configs.getInstance().ls_help },
         CAT: { value: "cat", help: configs.getInstance().cat_help },
         WHOAMI: { value: "whoami", help: configs.getInstance().whoami_help },
+        REVERSE: { value: "reverse", help: configs.getInstance().reverse_help },
+        MULTIPLES: { value: "multiples", help: configs.getInstance().multiples_help },
         DATE: { value: "date", help: configs.getInstance().date_help },
         HELP: { value: "help", help: configs.getInstance().help_help },
         CLEAR: { value: "clear", help: configs.getInstance().clear_help },
@@ -323,6 +326,12 @@ var main = (function () {
             case cmds.WHOAMI.value:
                 this.whoami();
                 break;
+            case cmds.REVERSE.value:
+                this.reverse(cmdComponents);
+                break;
+            case cmds.MULTIPLES.value:
+                this.multiples(cmdComponents);
+                break;
             case cmds.DATE.value:
                 this.date();
                 break;
@@ -378,6 +387,21 @@ var main = (function () {
     Terminal.prototype.whoami = function (cmdComponents) {
         var result = configs.getInstance().username + ": " + configs.getInstance().user + "\n" + configs.getInstance().hostname + ": " + configs.getInstance().host + "\n" + configs.getInstance().platform + ": " + navigator.platform + "\n" + configs.getInstance().accesible_cores + ": " + navigator.hardwareConcurrency + "\n" + configs.getInstance().language + ": " + navigator.language;
         this.type(result, this.unlock.bind(this));
+    };
+
+    Terminal.prototype.reverse = function (cmdComponents) {
+        // console.log("reverse");
+        var result = cmdComponents[1].split("").reverse().join(""); 
+        // console.log(result);
+
+        this.type(result.trim(), this.unlock.bind(this));
+    };
+    Terminal.prototype.multiples = function (cmdComponents) {
+         console.log("multiples");
+        //var result =  
+        // console.log(result);
+
+        this.type(result.trim(), this.unlock.bind(this));
     };
 
     Terminal.prototype.date = function (cmdComponents) {

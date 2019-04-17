@@ -16,7 +16,7 @@ var configs = (function () {
         ls_help: "List information about the files and folders (the current directory by default).",
         cat_help: "Read FILE(s) content and print it to the standard output (screen).",
         whoami_help: "Print the user name associated with the current effective user ID and more info.",
-        reverse_help: "Reverses a string.",
+        reverse_help: "Reverses a string passed as parameter. Strings with spaces must be wrapped in quotation marks.",
         multiples_help: "Prints the first 20 multiples of a number as a table."
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",

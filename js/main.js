@@ -17,7 +17,7 @@ var configs = (function () {
         cat_help: "Read FILE(s) content and print it to the standard output (screen).",
         whoami_help: "Print the user name associated with the current effective user ID and more info.",
         reverse_help: "Reverses a string passed as parameter. Strings with spaces must be wrapped in quotation marks.",
-        multiples_help: "Prints the first 20 multiples of a number as a table."
+        multiples_help: "Prints the first 20 multiples of a number as a table.",
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",
         clear_help: "Clear the terminal screen.",
@@ -398,9 +398,8 @@ var main = (function () {
     };
     Terminal.prototype.multiples = function (cmdComponents) {
          console.log("multiples");
-        //var result =  
-        // console.log(result);
-
+         
+         var result = cmdComponents[1];
         this.type(result.trim(), this.unlock.bind(this));
     };
 

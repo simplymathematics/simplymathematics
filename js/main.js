@@ -398,9 +398,15 @@ var main = (function () {
     };
     Terminal.prototype.multiples = function (cmdComponents) {
          console.log("multiples");
-         
-         var result = cmdComponents[1];
-        this.type(result.trim(), this.unlock.bind(this));
+         var base_array = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+         var input = cmdComponents[1];
+         var newArr = [];
+         for(var i = 0; i < base_array.length; i++) {
+            newArr[i] = base_array[i] * 3;
+         }
+         console.log(newArr)
+         var result = newArr;
+        this.type(result.join(), this.unlock.bind(this));
     };
 
     Terminal.prototype.date = function (cmdComponents) {

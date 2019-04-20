@@ -402,10 +402,12 @@ var main = (function () {
          var input = cmdComponents[1];
          var newArr = [];
          for(var i = 0; i < base_array.length; i++) {
-            newArr[i] = base_array[i] * 3;
+            newArr[i] = base_array[i] * input;
          }
          console.log(newArr)
          var result = newArr;
+         var table = document.createElement('table')
+
         this.type(result.join(), this.unlock.bind(this));
     };
 

@@ -419,11 +419,12 @@ var main = (function () {
                 for (var y = 1; y < 6; y++){
                   var num = (y+x-1) * input;
                   result += "\t" + num;
+                  console.log(num)
                 }
                 result+="\n"
             }
             this.type(result, this.unlock.bind(this));
-         } if(!isNaN(cmdComponents[1])) {
+         }else if(!isNaN(cmdComponents[1])) {
              var input = cmdComponents[1];
 
              var table = document.createElement('table')
@@ -439,6 +440,7 @@ var main = (function () {
             document.writeln("</table>");
             this.type(this.unlock.bind(this));
         }else{
+            result = ""
             result = configs.getInstance().multiples_help + " You must pass a number as a parameter."
             this.type(result, this.unlock.bind(this));
         }

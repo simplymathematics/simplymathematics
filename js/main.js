@@ -17,8 +17,7 @@ var configs = (function () {
         cat_help: "Read FILE(s) content and print it to the standard output (screen).",
         whoami_help: "Print the user name associated with the current effective user ID and more info.",
         reverse_help: "Reverses a string passed as parameter. Strings with spaces must be wrapped in quotation marks.",
-        multiples_help: "Prints the first 20 multiples of a number as a table on a new page.",
-        multiples_inline_help: "Prints the first 20 multiples of a number as an ASCII table to 'stdout'.",
+        multiples_help: "Prints the first 20 multiples of a number as a table on a new page. Use '-i' flag to print inline.",
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",
         clear_help: "Clear the terminal screen.",
@@ -35,7 +34,7 @@ var configs = (function () {
         invalid_command_message: "<value>: command not found.",
         reboot_message: "Preparing to reboot...\n\n3...\n\n2...\n\n1...\n\nRebooting...\n\n",
         permission_denied_message: "Unable to '<value>', permission denied.",
-        sudo_message: "Unable to sudo using a web client. There's probably another way.",
+        sudo_message: "User not found in sudoers. This event has been recorded.",
         usage: "Usage",
         file: "file",
         file_not_found: "File '<value>' not found.",
@@ -403,41 +402,36 @@ var main = (function () {
     };
     Terminal.prototype.multiples = function (cmdComponents) {
          console.log("multiples", cmdComponents[1]);
-         var input = cmdComponents[1];
-
-         var table = document.createElement('table')
-        document.writeln("<table width='100%' border='1'>");
-        for (var x = 1; x < 21; x = x+5) {
-            document.writeln("<tr>");
-            for (var y = 1; y < 6; y++){
-              var num = (y+x-1) * input;
-              document.writeln("<td>" + num + "</td>");
+         if(cmdComponents[1] == '-i'){
+            console.log(cmdComponents[1])
+            console.log(cmdComponents[2])
+            var result="";
+            var input = cmdComponents[2];     
+            for (var x = 1; x < 21; x = x+5) {
+                for (var y = 1; y < 6; y++){
+                  var num = (y+x-1) * input;
+                  result += "\t" + num;
+                }
+                result+="\n"
             }
-            document.writeln("</tr>");
-        }
-        document.writeln("</table>");
-        this.type(this.unlock.bind(this));
-    };
-    Terminal.prototype.multiples_inline = function (cmdComponents) {
-         var result="";
-         var base_array = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
-         var input = cmdComponents[1];     
-        // result+="<table width='100%' border='1'>";
-        for (var x = 1; x < 21; x = x+5) {
-            //result+="<tr>";
-            for (var y = 1; y < 6; y++){
-              var num = (y+x-1) * input;
-              //result+="<td>" + num + "</td>";
-              result += "\t" + num;
+            this.type(result, this.unlock.bind(this));
+         } else {
+             var input = cmdComponents[1];
+
+             var table = document.createElement('table')
+            document.writeln("<table width='100%' border='1'>");
+            for (var x = 1; x < 21; x = x+5) {
+                document.writeln("<tr>");
+                for (var y = 1; y < 6; y++){
+                  var num = (y+x-1) * input;
+                  document.writeln("<td>" + num + "</td>");
+                }
+                document.writeln("</tr>");
             }
-            //result+="</tr>";
-            result+="\n"
+            document.writeln("</table>");
+            this.type(this.unlock.bind(this));
         }
-        //result+="</table>";
-
-        this.type(result, this.unlock.bind(this));
     };
-
     Terminal.prototype.date = function (cmdComponents) {
         this.type(new Date().toString(), this.unlock.bind(this));
     };

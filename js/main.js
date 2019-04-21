@@ -404,6 +404,7 @@ var main = (function () {
     Terminal.prototype.multiples = function (cmdComponents) {
          console.log("multiples", cmdComponents[1]);
          var input = cmdComponents[1];
+
          var table = document.createElement('table')
         document.writeln("<table width='100%' border='1'>");
         for (var x = 1; x < 21; x = x+5) {
@@ -417,9 +418,6 @@ var main = (function () {
         document.writeln("</table>");
         this.type(this.unlock.bind(this));
     };
-
-
-
     Terminal.prototype.multiples_inline = function (cmdComponents) {
          var result="";
          var base_array = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
@@ -436,6 +434,7 @@ var main = (function () {
             result+="\n"
         }
         //result+="</table>";
+
         this.type(result, this.unlock.bind(this));
     };
 

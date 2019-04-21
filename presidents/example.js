@@ -1,19 +1,12 @@
 Plotly.d3.csv('data/presidents.csv', function(rows) {
   // Build list of unique presidents
   let presidents = [];
-  let heights    = [];
-  let weights    = [];
   rows.forEach(function(d) {
     if (!presidents.includes(d['Name'])) {
       presidents.push(d['Name']);
-      heights.push(d['Height']);
-      weights.push(d['Weight']);
     }
-});
+  });
 
-  // console.log(presidents, weights, heights);
-  var values = [presidents, weights, heights]
-  console.log(values)
   // Add unique presidents to selector
   Plotly.d3
     .select('#president-selector')
@@ -27,8 +20,6 @@ Plotly.d3.csv('data/presidents.csv', function(rows) {
     .attr('value', function(d) {
       return d;
     });
-
-    //Show Table
   function showTable(){
     var data = [{
       type: 'table',
@@ -46,16 +37,20 @@ Plotly.d3.csv('data/presidents.csv', function(rows) {
         font: {family: "Courier", size: 11, color: ["black"]}
     }
     }]
-    return data;
   }
   // Create a plotly graph given a president
+  function createGraph(president) {
+    // Create arrays for pricing tiers and dates
+    
+    };
 
 
-  // Create Plotly object
+    // Create Plotly object
+    
+
   // Get graph div
-  var data = showTable()
   myGraph = document.getElementById('graph');
-  Plotly.plot('graph', data);
+  Plotly.plot('graph', showTable);
   // Plot initial graph
   // Plotly.newPlot(myGraph, createGraph('Washington'));
 
@@ -65,4 +60,3 @@ Plotly.d3.csv('data/presidents.csv', function(rows) {
   //   Plotly.react(myGraph, fig);
   // });
 });
-

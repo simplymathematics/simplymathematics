@@ -107,7 +107,7 @@ var main = (function () {
         return (str.startsWith("http") || str.startsWith("www")) && str.indexOf(" ") === -1 && str.indexOf("\n") === -1;
     };
     
-    /**
+    /*
      * Model
      */
     var InvalidArgumentException = function (message) {
@@ -403,10 +403,11 @@ var main = (function () {
     };
 
      Terminal.prototype.presidents = function (cmdComponents) {
-        console.log('presidents');
-        
+        window.open("./presidents/index.html");
+        this.type(this.unlock.bind(this));
         
     };
+
     Terminal.prototype.multiples = function (cmdComponents) {
          console.log("multiples", cmdComponents[1]);
          if(cmdComponents[1] == '-i'){
@@ -422,7 +423,7 @@ var main = (function () {
                 result+="\n"
             }
             this.type(result, this.unlock.bind(this));
-         } else {
+         } if(!isNaN(cmdComponents[1])) {
              var input = cmdComponents[1];
 
              var table = document.createElement('table')
@@ -437,6 +438,9 @@ var main = (function () {
             }
             document.writeln("</table>");
             this.type(this.unlock.bind(this));
+        }else{
+            result = configs.getInstance().multiples_help + " You must pass a number as a parameter."
+            this.type(result, this.unlock.bind(this));
         }
     };
     Terminal.prototype.date = function (cmdComponents) {

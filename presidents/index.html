@@ -5,12 +5,79 @@
         <title>D3 Page Template</title>
         <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script> -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script type="text/javascript">
+            Plotly.d3.csv('data/presidents.csv', function(rows) {
+              // Build list of unique presidents
+              let presidents = [];
+              let heights    = [];
+              let weights    = [];
+              rows.forEach(function(d) {
+                if (!presidents.includes(d['Name'])) {
+                  presidents.push(d['Name']);
+                  heights.push(d['Height']);
+                  weights.push(d['Weight']);
+                }
+            });
+
+              // console.log(presidents, weights, heights);
+              var values = [presidents, weights, heights]
+              console.log(values)
+
+                //Show Table
+              function showTable(){
+                var data = [{
+                  type: 'table',
+                  header: {
+                    values: [["Name"], ["Height"], ["Weight"]],
+                    align: "center",
+                    line: {width: 1, color: 'black'},
+                    fill: {color: "grey"},
+                    font: {family: 'Courier New, monospace', size: 12, color: "black"}
+                    },
+                  cells:{
+                    values: values,
+                    align: 'center',
+                    line: {color: 'black', width: 1},
+                    font: {family: "Courier New, monospace", size: 11, color: ["black"]}
+                }
+                }]
+                return data;
+              }
+
+              // Create Plotly object
+              // Get table div
+              var data = showTable()
+              myGraph = document.getElementById('table');
+              Plotly.plot('table', data);
+            return data;
+
+            function myFunction() {
+              var x = document.getElementById("myText").value;
+              if(x in presidents){
+                let index = presidents.indexOf(x)
+                var these = [heights[index], weights[index]]
+                document.getElementById("demo").innerHTML = these;
+              }
+              else{
+                document.getElementById("demo").innerHTML = "I'm sorry. We don't have data on that president."
+              }
+              
+            }
+            });
+        </script>
+        <style>
+        </style>
     </head>
     <body>
-        <div id='graph'></div>
-        <div>
-          Select a President: <select id='president-selector'></select>
-        </div>
-        <script type="text/javascript" src="./example.js"></script>
+        <div id='table'></div>
+        <input type="text" id="myText" value="Some text...">
+
+        <p>Click the button below to return information about a given president.</p>
+        <button onclick="myFunction()">Search</button>
+
+        <p id="demo"></p>
+
     </body>
 </html>
+
+

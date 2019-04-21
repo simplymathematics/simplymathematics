@@ -6,6 +6,9 @@
         <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script> -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script type="text/javascript">
+            var globalPresidents;
+            var globalHeights;
+            var globaleWeights;
             Plotly.d3.csv('data/presidents.csv', function(rows) {
               // Build list of unique presidents
               let presidents = [];
@@ -17,6 +20,9 @@
                   heights.push(d['Height']);
                   weights.push(d['Weight']);
                 }
+                globalPresidents = presidents;
+                globalHeights    = heights;
+                globalWeights    = weights;
             });
 
               // console.log(presidents, weights, heights);
@@ -50,20 +56,21 @@
               myGraph = document.getElementById('table');
               Plotly.plot('table', data);
             return data;
+            });
 
             function myFunction() {
               var x = document.getElementById("myText").value;
-              if(x in presidents){
-                let index = presidents.indexOf(x)
-                var these = [heights[index], weights[index]]
-                document.getElementById("demo").innerHTML = these;
+              console.log(x)
+              if(globalPresidents.includes(x)){
+                let index = globalPresidents.indexOf(x)
+                var these = ["Height: " + globalHeights[index], "\nWeight: " + globalWeights[index]]
+                document.getElementById("demo").innerHTML = these.join().split(',');
               }
               else{
                 document.getElementById("demo").innerHTML = "I'm sorry. We don't have data on that president."
               }
-              
             }
-            });
+
         </script>
         <style>
         </style>

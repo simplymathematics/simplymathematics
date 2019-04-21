@@ -418,9 +418,6 @@ var main = (function () {
             document.writeln("</tr>");
         }
         document.writeln("</table>");
-
-
-
         this.type(result, this.unlock.bind(this));
     };
 

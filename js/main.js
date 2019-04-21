@@ -18,6 +18,7 @@ var configs = (function () {
         whoami_help: "Print the user name associated with the current effective user ID and more info.",
         reverse_help: "Reverses a string passed as parameter. Strings with spaces must be wrapped in quotation marks.",
         multiples_help: "Prints the first 20 multiples of a number as a table on a new page. Use '-i' flag to print inline.",
+        presidents_help: "Runs a demo app that reads data from a csv and searches for a string in said data, displaying appropriate results.",
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",
         clear_help: "Clear the terminal screen.",
@@ -129,7 +130,7 @@ var main = (function () {
         WHOAMI: { value: "whoami", help: configs.getInstance().whoami_help },
         REVERSE: { value: "reverse", help: configs.getInstance().reverse_help },
         MULTIPLES: { value: "multiples", help: configs.getInstance().multiples_help },
-        MULTIPLES_INLINE: { value: "multiples_inline", help: configs.getInstance().multiples_inline_help },
+        PRESIDENTS: { value: "presidents", help: configs.getInstance().presidents_help },
         DATE: { value: "date", help: configs.getInstance().date_help },
         HELP: { value: "help", help: configs.getInstance().help_help },
         CLEAR: { value: "clear", help: configs.getInstance().clear_help },
@@ -333,8 +334,8 @@ var main = (function () {
             case cmds.MULTIPLES.value:
                 this.multiples(cmdComponents);
                 break;
-            case cmds.MULTIPLES_INLINE.value:
-                this.multiples_inline(cmdComponents);
+            case cmds.PRESIDENTS.value:
+                this.multiples(cmdComponents);
                 break;
             case cmds.DATE.value:
                 this.date();
@@ -399,6 +400,12 @@ var main = (function () {
         // console.log(result);
 
         this.type(result.trim(), this.unlock.bind(this));
+    };
+
+     Terminal.prototype.presidents = function (cmdComponents) {
+        console.log('presidents');
+        
+        
     };
     Terminal.prototype.multiples = function (cmdComponents) {
          console.log("multiples", cmdComponents[1]);

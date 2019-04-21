@@ -34,7 +34,7 @@ var configs = (function () {
         invalid_command_message: "<value>: command not found.",
         reboot_message: "Preparing to reboot...\n\n3...\n\n2...\n\n1...\n\nRebooting...\n\n",
         permission_denied_message: "Unable to '<value>', permission denied.",
-        sudo_message: "User not found in sudoers. This event has been recorded.",
+        sudo_message: "User not found in sudoers file. This event has been recorded.",
         usage: "Usage",
         file: "file",
         file_not_found: "File '<value>' not found.",

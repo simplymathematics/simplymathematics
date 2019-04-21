@@ -17,7 +17,8 @@ var configs = (function () {
         cat_help: "Read FILE(s) content and print it to the standard output (screen).",
         whoami_help: "Print the user name associated with the current effective user ID and more info.",
         reverse_help: "Reverses a string passed as parameter. Strings with spaces must be wrapped in quotation marks.",
-        multiples_help: "Prints the first 20 multiples of a number as a table.",
+        multiples_help: "Prints the first 20 multiples of a number as a table on a new page.",
+        multiples_inline_help: "Prints the first 20 multiples of a number as an ASCII table to 'stdout'.",
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",
         clear_help: "Clear the terminal screen.",
@@ -129,6 +130,7 @@ var main = (function () {
         WHOAMI: { value: "whoami", help: configs.getInstance().whoami_help },
         REVERSE: { value: "reverse", help: configs.getInstance().reverse_help },
         MULTIPLES: { value: "multiples", help: configs.getInstance().multiples_help },
+        MULTIPLES_INLINE: { value: "multiples_inline", help: configs.getInstance().multiples_inline_help },
         DATE: { value: "date", help: configs.getInstance().date_help },
         HELP: { value: "help", help: configs.getInstance().help_help },
         CLEAR: { value: "clear", help: configs.getInstance().clear_help },
@@ -332,6 +334,9 @@ var main = (function () {
             case cmds.MULTIPLES.value:
                 this.multiples(cmdComponents);
                 break;
+            case cmds.MULTIPLES_INLINE.value:
+                this.multiples_inline(cmdComponents);
+                break;
             case cmds.DATE.value:
                 this.date();
                 break;
@@ -397,17 +402,10 @@ var main = (function () {
         this.type(result.trim(), this.unlock.bind(this));
     };
     Terminal.prototype.multiples = function (cmdComponents) {
-         console.log("multiples");
-         var base_array = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+         console.log("multiples", cmdComponents[1]);
          var input = cmdComponents[1];
-         var new_array = [];
-         for(var i = 0; i < base_array.length; i++) {
-            new_array[i] = base_array[i] * input;
-         }
-         console.log(new_array)
-         var result = new_array;
+
          var table = document.createElement('table')
-         result = result.join();
         document.writeln("<table width='100%' border='1'>");
         for (var x = 1; x < 21; x = x+5) {
             document.writeln("<tr>");
@@ -418,6 +416,25 @@ var main = (function () {
             document.writeln("</tr>");
         }
         document.writeln("</table>");
+        this.type(this.unlock.bind(this));
+    };
+    Terminal.prototype.multiples_inline = function (cmdComponents) {
+         var result="";
+         var base_array = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+         var input = cmdComponents[1];     
+        // result+="<table width='100%' border='1'>";
+        for (var x = 1; x < 21; x = x+5) {
+            //result+="<tr>";
+            for (var y = 1; y < 6; y++){
+              var num = (y+x-1) * input;
+              //result+="<td>" + num + "</td>";
+              result += "\t" + num;
+            }
+            //result+="</tr>";
+            result+="\n"
+        }
+        //result+="</table>";
+
         this.type(result, this.unlock.bind(this));
     };
 

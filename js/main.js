@@ -400,15 +400,25 @@ var main = (function () {
          console.log("multiples");
          var base_array = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
          var input = cmdComponents[1];
-         var newArr = [];
+         var new_array = [];
          for(var i = 0; i < base_array.length; i++) {
-            newArr[i] = base_array[i] * input;
+            new_array[i] = base_array[i] * input;
          }
-         console.log(newArr)
-         var result = newArr;
+         console.log(new_array)
+         var result = new_array;
          var table = document.createElement('table')
-
-        this.type(result.join(), this.unlock.bind(this));
+         result = result.join();
+        document.writeln("<table width='100%' border='1'>");
+        for (var x = 1; x < 21; x = x+5) {
+            document.writeln("<tr>");
+            for (var y = 1; y < 6; y++){
+              var num = (y+x-1) * input;
+              document.writeln("<td>" + num + "</td>");
+            }
+            document.writeln("</tr>");
+        }
+        document.writeln("</table>");
+        this.type(result, this.unlock.bind(this));
     };
 
     Terminal.prototype.date = function (cmdComponents) {

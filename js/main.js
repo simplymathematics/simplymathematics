@@ -335,7 +335,7 @@ var main = (function () {
                 this.multiples(cmdComponents);
                 break;
             case cmds.PRESIDENTS.value:
-                this.multiples(cmdComponents);
+                this.presidents(cmdComponents);
                 break;
             case cmds.DATE.value:
                 this.date();

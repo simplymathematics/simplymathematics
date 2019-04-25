@@ -19,6 +19,7 @@ var configs = (function () {
         reverse_help: "Reverses a string passed as parameter. Strings with spaces must be wrapped in quotation marks.",
         multiples_help: "Prints the first 20 multiples of a number as a table on a new page. Use '-i' flag to print inline.",
         presidents_help: "Runs a demo app that reads data from a csv and searches for a string in said data, displaying appropriate results.",
+        starwars_help: "Plays 'A New Hope'. Shamelessly stolen from: http://www.asciimation.co.nz/#",
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",
         clear_help: "Clear the terminal screen.",
@@ -131,6 +132,7 @@ var main = (function () {
         REVERSE: { value: "reverse", help: configs.getInstance().reverse_help },
         MULTIPLES: { value: "multiples", help: configs.getInstance().multiples_help },
         PRESIDENTS: { value: "presidents", help: configs.getInstance().presidents_help },
+        STARWARS: { value: "starwars", help: configs.getInstance().starwars_help },
         DATE: { value: "date", help: configs.getInstance().date_help },
         HELP: { value: "help", help: configs.getInstance().help_help },
         CLEAR: { value: "clear", help: configs.getInstance().clear_help },
@@ -335,7 +337,10 @@ var main = (function () {
                 this.multiples(cmdComponents);
                 break;
             case cmds.PRESIDENTS.value:
-                this.presidents(cmdComponents);
+                this.presidents();
+                break;
+            case cmds.STARWARS.value:
+                this.starwars();
                 break;
             case cmds.DATE.value:
                 this.date();
@@ -408,8 +413,14 @@ var main = (function () {
         this.type(result.trim(), this.unlock.bind(this));
     };
 
-     Terminal.prototype.presidents = function (cmdComponents) {
+     Terminal.prototype.presidents = function () {
         window.open("./presidents/index.html");
+        this.type(this.unlock.bind(this));
+        
+    };
+
+     Terminal.prototype.starwars = function () {
+        window.open("./starwars/index.html");
         this.type(this.unlock.bind(this));
         
     };

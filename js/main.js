@@ -396,13 +396,7 @@ var main = (function () {
 
     Terminal.prototype.reverse = function (cmdComponents) {
         // console.log("reverse");
-        if(cmdComponents[1]){
         var result = cmdComponents[1].split("").reverse().join(""); 
-    }else{
-        result = ""
-        result = configs.getInstance().reverse_help + " You must pass a number as a parameter."
-        this.type(result, this.unlock.bind(this));
-    }
         // console.log(result);
 
         this.type(result.trim(), this.unlock.bind(this));

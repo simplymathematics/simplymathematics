@@ -64,10 +64,10 @@
               if(globalPresidents.includes(x)){
                 let index = globalPresidents.indexOf(x)
                 var these = ["Height: " + globalHeights[index], "\nWeight: " + globalWeights[index]]
-                document.getElementById("demo").innerHTML = "<p style='color:white;font-family:courier'>" + these.join().split(',') + "</p>";
+                document.getElementById("demo").innerHTML = these.join().split(',');
               }
               else{
-                document.getElementById("demo").innerHTML = "<p style='color:white;font-family:courier'> I'm sorry. We don't have data on that president. The search is case sensitive.</p>"
+                document.getElementById("demo").innerHTML = "I'm sorry. We don't have data on that president."
               }
             }
 
@@ -77,15 +77,11 @@
         <div id='table'></div>
         <input type="text" id="myText" value="Some text...">
 
-        <p style="color:white; font-family:courier">Click the button below to return information about a given president.</p>
+        <p>Click the button below to return information about a given president.</p>
         <button onclick="myFunction()">Search</button>
 
         <p id="demo"></p>
-        <style> 
-            body{
-                background-color:black;
-            }
-        </style>
+
     </body>
 </html>
 

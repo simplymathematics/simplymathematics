@@ -72,11 +72,12 @@ var files = (function () {
         "welcome.sh": "Type help or use the sidebar on the left to nav",
         "contact.txt": "hello@simplymathematics.xyz",
         "github.git": "https://github.com/simplymathematics/",
-        "rpubs.R": "https://rpubs.com/simplymathematics/",
-        "NextBillionOnline.cpp" : "http://thenextbillion.online", 
+        "data_science.R": "https://rpubs.com/simplymathematics/data-skills",
+        "NextBillionOnline.cpp" : "http://thenextbillion.online",
         "SparksBot.pyc" : "https://thenextbilliononline.github.io/sparks-bot/",
-        "Resume.pdf" : "Resume.pdf"
-
+        "Thesis.pdf" : "https://simplymathematics.xyz/thesis",
+	"Recommendation-Engine.html" : "https://simplymathematics.xyz/recommendation-engine/",
+	"Photos.jpg" : "https://simplymathematics.xyz/photography"
     };
     return {
         getInstance: function (options) {

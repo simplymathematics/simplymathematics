@@ -77,7 +77,7 @@ var files = (function () {
         "SparksBot.pyc" : "https://thenextbilliononline.github.io/sparks-bot/",
         "Thesis.pdf" : "https://simplymathematics.xyz/thesis",
 	"Recommendation-Engine.html" : "https://simplymathematics.xyz/recommendation-engine/",
-	"Photos.jpg" : "https://simplymathematics.xyz/photography"
+	"Gallery.jpg" : "https://simplymathematics.xyz/gallery"
     };
     return {
         getInstance: function (options) {
